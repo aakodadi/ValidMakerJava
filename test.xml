@@ -1,0 +1,52 @@
+<org.ltir.vm.data.TreeNode>
+  <childs>
+    <org.ltir.vm.data.TreeNode>
+      <childs>
+        <org.ltir.vm.data.TreeNode>
+          <childs/>
+          <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+          <parent reference="/org.ltir.vm.data.TreeNode[1]/childs[1]/org.ltir.vm.data.TreeNode[1]"/>
+          <element class="string">one-one</element>
+        </org.ltir.vm.data.TreeNode>
+        <org.ltir.vm.data.TreeNode>
+          <childs/>
+          <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+          <parent reference="/org.ltir.vm.data.TreeNode[1]/childs[1]/org.ltir.vm.data.TreeNode[1]"/>
+          <element class="string">one-two</element>
+        </org.ltir.vm.data.TreeNode>
+      </childs>
+      <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+      <parent reference="/org.ltir.vm.data.TreeNode[1]"/>
+      <element class="string">one</element>
+    </org.ltir.vm.data.TreeNode>
+    <org.ltir.vm.data.TreeNode>
+      <childs>
+        <org.ltir.vm.data.TreeNode>
+          <childs/>
+          <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+          <parent reference="/org.ltir.vm.data.TreeNode[1]/childs[1]/org.ltir.vm.data.TreeNode[2]"/>
+          <element class="string">two-one</element>
+        </org.ltir.vm.data.TreeNode>
+        <org.ltir.vm.data.TreeNode>
+          <childs/>
+          <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+          <parent reference="/org.ltir.vm.data.TreeNode[1]/childs[1]/org.ltir.vm.data.TreeNode[2]"/>
+          <element class="string">two-two</element>
+        </org.ltir.vm.data.TreeNode>
+        <org.ltir.vm.data.TreeNode reference="/org.ltir.vm.data.TreeNode[1]"/>
+      </childs>
+      <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+      <parent reference="/org.ltir.vm.data.TreeNode[1]"/>
+      <element class="string">two</element>
+    </org.ltir.vm.data.TreeNode>
+    <org.ltir.vm.data.TreeNode>
+      <childs/>
+      <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+      <parent reference="/org.ltir.vm.data.TreeNode[1]"/>
+      <element class="string">three</element>
+    </org.ltir.vm.data.TreeNode>
+  </childs>
+  <root reference="/org.ltir.vm.data.TreeNode[1]"/>
+  <parent reference="/org.ltir.vm.data.TreeNode[1]/childs[1]/org.ltir.vm.data.TreeNode[2]"/>
+  <element class="string">zero</element>
+</org.ltir.vm.data.TreeNode>

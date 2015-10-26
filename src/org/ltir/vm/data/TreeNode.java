@@ -16,7 +16,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 
-public class TreeNode<E> implements Cloneable, Iterable<TreeNode<E>>, Collection<TreeNode<E>> {
+public class TreeNode<E> extends XSerializable implements Cloneable, Iterable<TreeNode<E>>, Collection<TreeNode<E>> {
 
     private ArrayList<TreeNode<E>> childs;
     private TreeNode<E> root;
