@@ -19,5 +19,6 @@ public class Network {
     ArrayList<GenericService> genericServices;
     ArrayList<ServiceInstance> serviceInstances;
     ArrayList<ServiceFamily> serviceFamilies;
+    ArrayList<Device> devices;
     
 }

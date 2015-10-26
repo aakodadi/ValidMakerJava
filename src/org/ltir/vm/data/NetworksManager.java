@@ -1,7 +1,7 @@
 /*
  * Project: ValidMakerJava
  * Package: org.ltir.vm.data
- * File: Networks.java
+ * File: NetworksManager.java
  * Brief: 
  * 
  * Organization: LTIR UQAM
@@ -12,6 +12,7 @@ package org.ltir.vm.data;
 
 import java.util.ArrayList;
 
-public class Networks {
+public class NetworksManager {
+    String workspace;
     ArrayList<Network> networks;
 }
