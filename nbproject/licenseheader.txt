@@ -1,0 +1,14 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Project: ${project.name}
+${licensePrefix}Package: ${package}
+${licensePrefix}File: ${nameAndExt}
+${licensePrefix}Brief: 
+${licensePrefix}
+${licensePrefix}Organization: LTIR UQAM
+${licensePrefix}Authors: Amine Rahj, Abdelhakim Akodadi
+${licensePrefix}Created on ${date}, ${time}
+<#if licenseLast??>
+${licenseLast}
+</#if>
