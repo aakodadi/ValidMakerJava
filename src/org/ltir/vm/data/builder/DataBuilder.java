@@ -14,8 +14,7 @@ import org.ltir.vm.data.Network;
 import org.ltir.vm.data.TreeNode;
 
 abstract public class DataBuilder {
-    Network network;
-    
+    Network network;   
     
     abstract public void buildPart(TreeNode tn) ;
 }

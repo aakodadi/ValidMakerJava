@@ -10,6 +10,9 @@
  */
 package org.ltir.vm.data;
 
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,9 +22,16 @@ import java.util.Iterator;
 public class TreeNode<E> extends XSerializable implements Cloneable, Iterable<TreeNode<E>>, Collection<TreeNode<E>> {
 
     private ArrayList<TreeNode<E>> childs;
+    @XStreamAsAttribute
     private TreeNode<E> root;
+    @XStreamAsAttribute
     private TreeNode<E> parent;
+    @XStreamAsAttribute
     private E element;
+
+    public TreeNode() {
+        this(null, null, null);
+    }
 
     public TreeNode(E element) {
         this(null, null, element);
@@ -163,6 +173,10 @@ public class TreeNode<E> extends XSerializable implements Cloneable, Iterable<Tr
     @Override
     public void clear() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static TreeNode deserializeTree(BufferedReader br) throws IOException {
+        return (TreeNode) deserialize(br);
     }
 
 }

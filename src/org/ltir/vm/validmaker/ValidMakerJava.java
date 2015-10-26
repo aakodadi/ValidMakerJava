@@ -17,10 +17,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.ltir.vm.data.Cardinality;
+import org.ltir.vm.data.Command;
+import org.ltir.vm.data.GenericService;
+import org.ltir.vm.data.Network;
 import org.ltir.vm.data.TreeNode;
 
 public class ValidMakerJava {
@@ -43,16 +45,7 @@ public class ValidMakerJava {
         twoNode.add(new TreeNode<>("two-one"));
         twoNode.add(new TreeNode<>("two-two"));
         twoNode.add(tree);
-/*
-        XStream xstream = new XStream();
-        xstream.alias("Node", TreeNode.class);
-        xstream.aliasField("name", TreeNode.class, "element");
-        xstream.setMode(XStream.SINGLE_NODE_XPATH_ABSOLUTE_REFERENCES);
-        String xml = xstream.toXML(tree);
-        System.out.println(xml);
-        tree = null;
-        tree = (TreeNode<String>) xstream.fromXML(xml);
-*/
+        
         try {
             FileWriter fw = new FileWriter(new File("test.xml"));
             tree.serialize(fw);
@@ -65,7 +58,7 @@ public class ValidMakerJava {
         
         try {
             BufferedReader br = new BufferedReader(new FileReader("test.xml"));
-            tree = (TreeNode<String>) tree.deserialize(br);
+            tree = tree.deserializeTree(br);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ValidMakerJava.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -81,5 +74,32 @@ public class ValidMakerJava {
                 }
             }
         }
+        
+        Network n = new Network("UQAM", "UQAM LAN Network", ".");
+        GenericService gs = new GenericService("Switching", "Switching Parameters");
+        Command c = new Command(Cardinality.CARD_1_0, null, "interface", null);
+        gs.addCommand(new TreeNode<Command>(c));
+        n.addGenericService(gs);
+        
+        
+        try {
+            FileWriter fw = new FileWriter(new File("uqam_network.xml"));
+            n.serialize(fw);
+            fw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ValidMakerJava.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        n = null;
+        
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("uqam_network.xml"));
+            n =  n.deserializeNetwork(br);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ValidMakerJava.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ValidMakerJava.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }

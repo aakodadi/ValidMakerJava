@@ -19,13 +19,15 @@ public abstract class XSerializable {
 
     public void serialize(FileWriter fw) throws IOException {
         XStream xs = new XStream();
+        xs.autodetectAnnotations(true);
         xs.setMode(XStream.SINGLE_NODE_XPATH_ABSOLUTE_REFERENCES);
         String XMLres = xs.toXML(this);
         fw.write(XMLres);
     }
 
-    public static Object deserialize(BufferedReader br) throws IOException {
+    protected static Object deserialize(BufferedReader br) throws IOException {
         XStream xs = new XStream();
+        xs.autodetectAnnotations(true);
         xs.setMode(XStream.SINGLE_NODE_XPATH_ABSOLUTE_REFERENCES);
         String res;
         String XMLres = "";

@@ -10,8 +10,41 @@
  */
 package org.ltir.vm.data;
 
-public class GenericService {
+public class GenericService extends XSerializable {
     String name;
     String description;
     TreeNode<Command> commands;
+
+    public GenericService(String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.commands = new TreeNode<>();
+        this.commands.setRoot(commands);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public TreeNode<Command> getCommand(int index) {
+        return commands.get(index);
+    }
+
+    public boolean addCommand(TreeNode<Command> node) {
+        return commands.add(node);
+    }
+    
+    
 }

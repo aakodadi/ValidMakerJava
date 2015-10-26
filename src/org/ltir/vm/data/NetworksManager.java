@@ -10,9 +10,10 @@
  */
 package org.ltir.vm.data;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class NetworksManager {
     String workspace;
-    ArrayList<Network> networks;
+    List<Network> networks;
+    List<CLIReference> metaCLIs;
 }
