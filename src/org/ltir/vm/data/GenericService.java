@@ -10,6 +10,10 @@
  */
 package org.ltir.vm.data;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import static org.ltir.vm.data.XSerializable.deserialize;
+
 public class GenericService extends XSerializable {
     String name;
     String description;
@@ -20,6 +24,10 @@ public class GenericService extends XSerializable {
         this.description = description;
         this.commands = new TreeNode<>();
         this.commands.setRoot(commands);
+    }
+    
+    public static GenericService deserializeGenericService(BufferedReader br) throws IOException{
+        return (GenericService) deserialize(br);
     }
 
     public String getName() {

@@ -13,13 +13,11 @@ package org.ltir.vm.data;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Network extends XSerializable{
+public class Network{
     
     @XStreamAlias("name")
     @XStreamAsAttribute
@@ -45,10 +43,6 @@ public class Network extends XSerializable{
         serviceInstances = new ArrayList<>();
         serviceFamilies = new ArrayList<>();
         devices = new ArrayList<>();
-    }
-    
-    public static Network deserializeNetwork(BufferedReader br) throws IOException{
-        return (Network) deserialize(br);
     }
 
     public String getName() {

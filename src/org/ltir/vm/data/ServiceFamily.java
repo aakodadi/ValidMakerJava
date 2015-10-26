@@ -10,9 +10,21 @@
  */
 package org.ltir.vm.data;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import static org.ltir.vm.data.XSerializable.deserialize;
 
-public class ServiceFamily {
+public class ServiceFamily  extends XSerializable{
     ArrayList<ServiceInstance> serviceInstences;
     ArrayList<Rule> rules;
+
+    public ServiceFamily() {
+        this.serviceInstences = new ArrayList<>();
+        this.rules = new ArrayList<>();
+    }
+    
+    public static ServiceFamily deserializeServiceFamily(BufferedReader br) throws IOException{
+        return (ServiceFamily) deserialize(br);
+    }
 }

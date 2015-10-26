@@ -10,9 +10,28 @@
  */
 package org.ltir.vm.data;
 
-public class ServiceInstance {
+import java.io.BufferedReader;
+import java.io.IOException;
+import static org.ltir.vm.data.XSerializable.deserialize;
+
+public class ServiceInstance  extends XSerializable{
     String name;
     String description;
     GenericService genericService;
     TreeNode<Command> commands;
+
+    public ServiceInstance(String name, String description) {
+        this(name, description, null);
+    }
+
+    public ServiceInstance(String name, String description, GenericService genericService) {
+        this.name = name;
+        this.description = description;
+        this.genericService = genericService;
+    }
+    
+    public static ServiceInstance deserializeServiceInstance(BufferedReader br) throws IOException{
+        return (ServiceInstance) deserialize(br);
+    }
+    
 }

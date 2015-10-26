@@ -81,7 +81,7 @@ public class ValidMakerJava {
         gs.addCommand(new TreeNode<Command>(c));
         n.addGenericService(gs);
         
-        
+        /*
         try {
             FileWriter fw = new FileWriter(new File("uqam_network.xml"));
             n.serialize(fw);
@@ -100,6 +100,6 @@ public class ValidMakerJava {
         } catch (IOException ex) {
             Logger.getLogger(ValidMakerJava.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        */
     }
 }
