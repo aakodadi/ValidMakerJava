@@ -54,6 +54,4 @@ public class Command {
     public void setArgument(String argument) {
         this.argument = argument;
     }
-    
-    
 }

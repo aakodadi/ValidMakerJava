@@ -10,14 +10,17 @@
  */
 package org.ltir.vm.data;
 
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import java.io.BufferedReader;
 import java.io.IOException;
 import static org.ltir.vm.data.XSerializable.deserialize;
 
 public class GenericService extends XSerializable {
-    String name;
-    String description;
-    TreeNode<Command> commands;
+    @XStreamAsAttribute
+    private String name;
+    private String description;
+    
+    private TreeNode<Command> commands;
 
     public GenericService(String name, String description) {
         this.name = name;

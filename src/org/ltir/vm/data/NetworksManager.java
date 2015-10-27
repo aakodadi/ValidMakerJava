@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NetworksManager extends XSerializable{
-    String workspace;
-    List<Network> networks;
-    List<CLIReference> metaCLIs;
+    private String workspace;
+    private final List<Network> networks;
+    private final List<CLIReference> metaCLIs;
 
     public NetworksManager(String workspace) {
         this.workspace = workspace;
@@ -37,7 +37,45 @@ public class NetworksManager extends XSerializable{
     public void setWorkspace(String workspace) {
         this.workspace = workspace;
     }
-    
-    
+
+    public boolean addNetwork(Network e) {
+        return networks.add(e);
+    }
+
+    public boolean removeNetwork(Network n) {
+        return networks.remove(n);
+    }
+
+    public Network getNetwork(int index) {
+        return networks.get(index);
+    }
+
+    public void addNetwork(int index, Network element) {
+        networks.add(index, element);
+    }
+
+    public Network removeNetwork(int index) {
+        return networks.remove(index);
+    }
+
+    public boolean addMetaCLI(CLIReference e) {
+        return metaCLIs.add(e);
+    }
+
+    public boolean removeMetaCLI(CLIReference cli) {
+        return metaCLIs.remove(cli);
+    }
+
+    public CLIReference getMetaCLI(int index) {
+        return metaCLIs.get(index);
+    }
+
+    public void addMetaCLI(int index, CLIReference element) {
+        metaCLIs.add(index, element);
+    }
+
+    public CLIReference removeMetaCLI(int index) {
+        return metaCLIs.remove(index);
+    }
     
 }
