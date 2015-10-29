@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.ltir.vm.data.Argument;
 import org.ltir.vm.data.CLIReference;
 import org.ltir.vm.data.Cardinality;
 import org.ltir.vm.data.Command;
@@ -57,17 +58,29 @@ public class ValidMakerJava {
         }
         */
         
-        CLIReference ioReference = new CLIReference("Default MetaCLI reference", "none", "Cisco IOS command reference (all versions)");
+        CLIReference ioReference = new CLIReference("Default MetaCLI reference", "all-versions", "Cisco IOS command reference");
         
         /* 
          * global mode commands --------------
          * mode set to null
          */
-        Command c = new Command(Cardinality.CARD_1_0, null, "hostname", CommandType.COMMAND, "$hostname", ".+");
+        Command c = new Command(Cardinality.CARD_1_0, null, "hostname", CommandType.COMMAND);
+        Argument a = new Argument("hostname", "$hostname", Argument.HOSTNAME_REGEX, true);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, null, "version", CommandType.COMMAND, "$version", ".+");
+        c = new Command(Cardinality.CARD_1_0, null, "version", CommandType.COMMAND);
+        a = new Argument("version", "$version", ".+", true);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, null, "ip cef", CommandType.COMMAND, "[accounting $type | load-sharing algorithm $algorithm | table $type | traffic-statistics]", ".+");
+        c = new Command(Cardinality.CARD_1_0, null, "ip cef", CommandType.COMMAND);
+        a = new Argument("accounting", "accounting $type", "accounting .+", false);
+        c.addArgument(a);
+        a = new Argument("load-sharing algorithm", "load-sharing algorithm $algorithm", "load-sharing algorithm .+", false);
+        c.addArgument(a);
+        a = new Argument("table", "table $type", "table .+", false);
+        c.addArgument(a);
+        a = new Argument("traffic-statistics", "traffic-statistics", "traffic-statistics", false);
+        c.addArgument(a);
         ioReference.addCommand(c);
         
         /* 
@@ -75,39 +88,112 @@ public class ValidMakerJava {
          */
         
         /* interface */
-        Command interfaceMode = new Command(Cardinality.CARD_1_N, null, "interface", CommandType.MODE, "$type$number [$name-tag]", ".+");
+        Command interfaceMode = new Command(Cardinality.CARD_1_N, null, "interface", CommandType.MODE);
+        a = new Argument("interface", "$interface", ".+", true);
+        interfaceMode.addArgument(a);
+        a = new Argument("tag-name", "$tag-name", ".+", true);
+        interfaceMode.addArgument(a);
         ioReference.addCommand(interfaceMode);
         
         /* vrf */
-        Command vrfMode = new Command(Cardinality.CARD_1_N, null, "ip vrf", CommandType.MODE, "$vrf-name", ".+");
+        Command vrfMode = new Command(Cardinality.CARD_1_N, null, "ip vrf", CommandType.MODE);
+        a = new Argument("vrf-name", "$vrf-name", ".+", true);
+        vrfMode.addArgument(a);
         ioReference.addCommand(vrfMode);
         
-        /* isis */
-        Command isisMode = new Command(Cardinality.CARD_1_N, null, "router isis", CommandType.MODE, "[$area-tag]", ".+");
-        ioReference.addCommand(isisMode);
+        /* router */
+        Command routerMode = new Command(Cardinality.CARD_1_N, null, "router isis", CommandType.MODE);
+        a = new Argument("isis", "isis $area-tag", "isis .+", false);
+        routerMode.addArgument(a);
+        a = new Argument("bgp", "bgp $as-number", "bgp .+", false);
+        routerMode.addArgument(a);
+        ioReference.addCommand(routerMode);
+        /* router submodes */
+        Command addressFamiliySubMode = new Command(Cardinality.CARD_1_N, routerMode, "address-family vpnv4", CommandType.SUBMODE);
+        a = new Argument("unicast", "unicast", "unicast", false);
+        addressFamiliySubMode.addArgument(a);
+        ioReference.addCommand(addressFamiliySubMode);
         
         /* interface mode commands */
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip vrf forwarding", CommandType.COMMAND, "$vrf-name", ".+");
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip vrf forwarding", CommandType.COMMAND);
+        a = new Argument("vrf-name", "$vrf-name", ".+", true);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip directed-broadcast", CommandType.COMMAND, "[$access-list-number] | [$extended access-list-number]", ".+");
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip directed-broadcast", CommandType.COMMAND);
+        a = new Argument("access-list-number", "$access-list-number", ".+", false);
+        c.addArgument(a);
+        a = new Argument("extended access-list-number", "extended $access-list-number", "extended .+", false);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "no ip address", CommandType.COMMAND, null, null);
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "no ip address", CommandType.COMMAND);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip address", CommandType.COMMAND, "$ip-address mask $mask [secondary]", ".+");
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip address", CommandType.COMMAND);
+        a = new Argument("ip-address", "$ip-address", Argument.IPV4_ADDR_REGEX, true);
+        c.addArgument(a);
+        a = new Argument("mask", "mask $mask", "mask " + Argument.IPV4_ADDR_REGEX, true);
+        c.addArgument(a);
+        a = new Argument("secondary", "secondary", "secondary", false);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "encapsulation", CommandType.COMMAND, "$encapsulation-type", "gre|vxlan");
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "encapsulation", CommandType.COMMAND);
+        a = new Argument("encapsulation-type", "$encapsulation-type", ".+", true);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "fair-queue", CommandType.COMMAND, "$encapsulation-type", ".+");
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "fair-queue", CommandType.COMMAND);
+        a = new Argument("number-of-dynamic-queues", "$number-of-dynamic-queues", ".+", false);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip router isis", CommandType.COMMAND, "$encapsulation-type", ".+");
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip router isis", CommandType.COMMAND);
+        a = new Argument("area-tag", "$area-tag", ".+", false);
+        c.addArgument(a);
+        ioReference.addCommand(c);
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "tag-switching ip", CommandType.COMMAND);
+        ioReference.addCommand(c);
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "frame-relay interface-dlci", CommandType.COMMAND);
+        a = new Argument("dlci", "$dlci", ".+", true);
+        c.addArgument(a);
+        a = new Argument("ietf/cisco", "ietf|cisco", "ietf|cisco", false);
+        c.addArgument(a);
+        a = new Argument("voice-cir", "voice-cir $cir", "voice-cir .+", false);
+        c.addArgument(a);
+        ioReference.addCommand(c);
+        c = new Command(Cardinality.CARD_1_0, interfaceMode, "bandwidth", CommandType.COMMAND);
+        a = new Argument("bandwidth", "$bandwidth", ".+", true); // $bandwidth (kilobites)
+        c.addArgument(a);
         ioReference.addCommand(c);
         
         /* vrf mode commands */
-        c = new Command(Cardinality.CARD_1_0, vrfMode, "rd", CommandType.COMMAND, "$route-distinguisher", ".+");
+        c = new Command(Cardinality.CARD_1_0, vrfMode, "rd", CommandType.COMMAND);
+        a = new Argument("route-distinguisher", "$route-distinguisher", ".+", true);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, vrfMode, "route-target import", CommandType.COMMAND, "$route-target-ext-community", ".+");
+        c = new Command(Cardinality.CARD_1_0, vrfMode, "route-target import", CommandType.COMMAND);
+        a = new Argument("route-target-ext-community", "$route-target-ext-community", ".+", true);
+        c.addArgument(a);
         ioReference.addCommand(c);
-        c = new Command(Cardinality.CARD_1_0, vrfMode, "route-target export", CommandType.COMMAND, "$route-target-ext-community", ".+");
+        c = new Command(Cardinality.CARD_1_0, vrfMode, "route-target export", CommandType.COMMAND);
+        a = new Argument("route-target-ext-community", "$route-target-ext-community", ".+", true);
+        c.addArgument(a);
+        ioReference.addCommand(c);
+        
+        /* router mode commands*/
+        c = new Command(Cardinality.CARD_1_0, routerMode, "is-type", CommandType.COMMAND);
+        a = new Argument("level", "$level", "level-1|level-1-2|level-2-only", true);
+        c.addArgument(a);
+        ioReference.addCommand(c);
+        c = new Command(Cardinality.CARD_1_0, routerMode, "bgp log-neighbor-changes", CommandType.COMMAND);
+        ioReference.addCommand(c);
+        c = new Command(Cardinality.CARD_1_0, routerMode, "neighbor remote-as", CommandType.COMMAND);
+        a = new Argument("ip-address/peer-group-name", "$ip-address | $peer-group-name", ".+", true);
+        c.addArgument(a);
+        a = new Argument("remote-as", "remote-as as-number $as-number", "remote-as as-number .+", true);
+        c.addArgument(a);
+        ioReference.addCommand(c);
+        c = new Command(Cardinality.CARD_1_0, routerMode, "neighbor update-source", CommandType.COMMAND);
+        a = new Argument("neighbor", "$ip-address | $ipv6-address | $peer-group-name", ".+", true);
+        c.addArgument(a);
+        a = new Argument("update-source", "update-source interface $interface", "update-source interface .+", true);
+        c.addArgument(a);
         ioReference.addCommand(c);
         
         try {

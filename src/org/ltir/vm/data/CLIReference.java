@@ -10,6 +10,7 @@
  */
 package org.ltir.vm.data;
 
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +19,9 @@ import static org.ltir.vm.data.XSerializable.deserialize;
 
 public class CLIReference extends XSerializable {
 
+    @XStreamAsAttribute
     private String name;
+    @XStreamAsAttribute
     private String version;
     private String description;
     private final List<Command> commands;

@@ -1,112 +1,320 @@
-<org.ltir.vm.data.CLIReference>
-  <name>Default MetaCLI reference</name>
-  <version>none</version>
-  <description>Cisco IOS command reference (all versions)</description>
+<org.ltir.vm.data.CLIReference name="Default MetaCLI reference" version="all-versions">
+  <description>Cisco IOS command reference</description>
   <commands>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <command>hostname</command>
-      <argument>$hostname</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="hostname" required="true">
+          <value>$hostname</value>
+          <argRegEX>^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9]).)*([A-Za-z]|[A-Za-z][A-Za-z0-9-]*[A-Za-z0-9])$</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <command>version</command>
-      <argument>$version</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="version" required="true">
+          <value>$version</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <command>ip cef</command>
-      <argument>[accounting $type | load-sharing algorithm $algorithm | table $type | traffic-statistics]</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="accounting" required="false">
+          <value>accounting $type</value>
+          <argRegEX>accounting .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="load-sharing algorithm" required="false">
+          <value>load-sharing algorithm $algorithm</value>
+          <argRegEX>load-sharing algorithm .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="table" required="false">
+          <value>table $type</value>
+          <argRegEX>table .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="traffic-statistics" required="false">
+          <value>traffic-statistics</value>
+          <argRegEX>traffic-statistics</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
-      <cardinality>CARD_1_0</cardinality>
+      <cardinality>CARD_1_N</cardinality>
       <type>MODE</type>
       <command>interface</command>
-      <argument>$type$number [$name-tag]</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="interface" required="true">
+          <value>$interface</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="tag-name" required="true">
+          <value>$tag-name</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
-      <cardinality>CARD_1_0</cardinality>
+      <cardinality>CARD_1_N</cardinality>
       <type>MODE</type>
       <command>ip vrf</command>
-      <argument>$vrf-name</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="vrf-name" required="true">
+          <value>$vrf-name</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_N</cardinality>
+      <type>MODE</type>
+      <command>router isis</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="isis" required="false">
+          <value>isis $area-tag</value>
+          <argRegEX>isis .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="bgp" required="false">
+          <value>bgp $as-number</value>
+          <argRegEX>bgp .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_N</cardinality>
+      <type>SUBMODE</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
+      <command>address-family vpnv4</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="unicast" required="false">
+          <value>unicast</value>
+          <argRegEX>unicast</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>ip vrf forwarding</command>
-      <argument>$vrf-name</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="vrf-name" required="true">
+          <value>$vrf-name</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>ip directed-broadcast</command>
-      <argument>[$access-list-number] | [$extended access-list-number]</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="access-list-number" required="false">
+          <value>$access-list-number</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="extended access-list-number" required="false">
+          <value>extended $access-list-number</value>
+          <argRegEX>extended .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>no ip address</command>
+      <arguments/>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>ip address</command>
-      <argument>$ip-address mask $mask [secondary]</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="ip-address" required="true">
+          <value>$ip-address</value>
+          <argRegEX>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="mask" required="true">
+          <value>mask $mask</value>
+          <argRegEX>mask ^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="secondary" required="false">
+          <value>secondary</value>
+          <argRegEX>secondary</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>encapsulation</command>
-      <argument>$encapsulation-type</argument>
-      <argRegEX>gre|vxlan</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="encapsulation-type" required="true">
+          <value>$encapsulation-type</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>fair-queue</command>
-      <argument>$encapsulation-type</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="number-of-dynamic-queues" required="false">
+          <value>$number-of-dynamic-queues</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>ip router isis</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="area-tag" required="false">
+          <value>$area-tag</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>tag-switching ip</command>
+      <arguments/>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>frame-relay interface-dlci</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="dlci" required="true">
+          <value>$dlci</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="ietf/cisco" required="false">
+          <value>ietf|cisco</value>
+          <argRegEX>ietf|cisco</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="voice-cir" required="false">
+          <value>voice-cir $cir</value>
+          <argRegEX>voice-cir .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>bandwidth</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="bandwidth" required="true">
+          <value>$bandwidth</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
       <command>rd</command>
-      <argument>$route-distinguisher</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="route-distinguisher" required="true">
+          <value>$route-distinguisher</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
       <command>route-target import</command>
-      <argument>$route-target-ext-community</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="route-target-ext-community" required="true">
+          <value>$route-target-ext-community</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
     <org.ltir.vm.data.Command>
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
       <command>route-target export</command>
-      <argument>$route-target-ext-community</argument>
-      <argRegEX>.+</argRegEX>
+      <arguments>
+        <org.ltir.vm.data.Argument name="route-target-ext-community" required="true">
+          <value>$route-target-ext-community</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
+      <command>is-type</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="level" required="true">
+          <value>$level</value>
+          <argRegEX>level-1|level-1-2|level-2-only</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
+      <command>bgp log-neighbor-changes</command>
+      <arguments/>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
+      <command>neighbor remote-as</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="ip-address/peer-group-name" required="true">
+          <value>$ip-address | $peer-group-name</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="remote-as" required="true">
+          <value>remote-as as-number $as-number</value>
+          <argRegEX>remote-as as-number .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
+      <command>neighbor update-source</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="neighbor" required="true">
+          <value>$ip-address | $ipv6-address | $peer-group-name</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+        <org.ltir.vm.data.Argument name="update-source" required="true">
+          <value>update-source interface $interface</value>
+          <argRegEX>update-source interface .+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
     </org.ltir.vm.data.Command>
   </commands>
 </org.ltir.vm.data.CLIReference>

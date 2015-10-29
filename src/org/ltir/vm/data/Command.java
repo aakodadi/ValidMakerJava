@@ -10,21 +10,22 @@
  */
 package org.ltir.vm.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Command {
     private Cardinality cardinality;
     private CommandType type;
     private Command mode;
     private String command;
-    private String argument;
-    private String argRegEX;
+    private final List<Argument> arguments;
 
-    public Command(Cardinality cardinality, Command mode, String command, CommandType type, String argument, String argRegEX) {
+    public Command(Cardinality cardinality, Command mode, String command, CommandType type) {
         this.cardinality = cardinality;
         this.mode = mode;
         this.command = command;
         this.type = type;
-        this.argument = argument;
-        this.argRegEX = argRegEX;
+        this.arguments = new ArrayList<>();
     }
 
     public CommandType getType() {
@@ -33,15 +34,6 @@ public class Command {
 
     public void setType(CommandType type) {
         this.type = type;
-    }
-    
-
-    public String getArgRegEX() {
-        return argRegEX;
-    }
-
-    public void setArgRegEX(String argRegEX) {
-        this.argRegEX = argRegEX;
     }
 
     public Cardinality getCardinality() {
@@ -68,11 +60,24 @@ public class Command {
         this.command = command;
     }
 
-    public String getArgument() {
-        return argument;
+    public boolean addArgument(Argument e) {
+        return arguments.add(e);
     }
 
-    public void setArgument(String argument) {
-        this.argument = argument;
+    public boolean removeArgument(Argument a) {
+        return arguments.remove(a);
     }
+
+    public Argument getArgument(int index) {
+        return arguments.get(index);
+    }
+
+    public void addArgument(int index, Argument element) {
+        arguments.add(index, element);
+    }
+
+    public Argument removeArgument(int index) {
+        return arguments.remove(index);
+    }
+    
 }
