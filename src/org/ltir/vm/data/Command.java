@@ -12,15 +12,36 @@ package org.ltir.vm.data;
 
 public class Command {
     private Cardinality cardinality;
-    private Command familiy;
+    private CommandType type;
+    private Command mode;
     private String command;
     private String argument;
+    private String argRegEX;
 
-    public Command(Cardinality cardinality, Command familiy, String command, String argument) {
+    public Command(Cardinality cardinality, Command mode, String command, CommandType type, String argument, String argRegEX) {
         this.cardinality = cardinality;
-        this.familiy = familiy;
+        this.mode = mode;
         this.command = command;
+        this.type = type;
         this.argument = argument;
+        this.argRegEX = argRegEX;
+    }
+
+    public CommandType getType() {
+        return type;
+    }
+
+    public void setType(CommandType type) {
+        this.type = type;
+    }
+    
+
+    public String getArgRegEX() {
+        return argRegEX;
+    }
+
+    public void setArgRegEX(String argRegEX) {
+        this.argRegEX = argRegEX;
     }
 
     public Cardinality getCardinality() {
@@ -31,12 +52,12 @@ public class Command {
         this.cardinality = cardinality;
     }
 
-    public Command getFamiliy() {
-        return familiy;
+    public Command getMode() {
+        return mode;
     }
 
-    public void setFamiliy(Command familiy) {
-        this.familiy = familiy;
+    public void setMode(Command familiy) {
+        this.mode = familiy;
     }
 
     public String getCommand() {

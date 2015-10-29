@@ -1,0 +1,112 @@
+<org.ltir.vm.data.CLIReference>
+  <name>Default MetaCLI reference</name>
+  <version>none</version>
+  <description>Cisco IOS command reference (all versions)</description>
+  <commands>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <command>hostname</command>
+      <argument>$hostname</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <command>version</command>
+      <argument>$version</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <command>ip cef</command>
+      <argument>[accounting $type | load-sharing algorithm $algorithm | table $type | traffic-statistics]</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>MODE</type>
+      <command>interface</command>
+      <argument>$type$number [$name-tag]</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>MODE</type>
+      <command>ip vrf</command>
+      <argument>$vrf-name</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>ip vrf forwarding</command>
+      <argument>$vrf-name</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>ip directed-broadcast</command>
+      <argument>[$access-list-number] | [$extended access-list-number]</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>no ip address</command>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>ip address</command>
+      <argument>$ip-address mask $mask [secondary]</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>encapsulation</command>
+      <argument>$encapsulation-type</argument>
+      <argRegEX>gre|vxlan</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
+      <command>fair-queue</command>
+      <argument>$encapsulation-type</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
+      <command>rd</command>
+      <argument>$route-distinguisher</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
+      <command>route-target import</command>
+      <argument>$route-target-ext-community</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command>
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
+      <command>route-target export</command>
+      <argument>$route-target-ext-community</argument>
+      <argRegEX>.+</argRegEX>
+    </org.ltir.vm.data.Command>
+  </commands>
+</org.ltir.vm.data.CLIReference>

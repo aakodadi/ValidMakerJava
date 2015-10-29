@@ -10,6 +10,7 @@
  */
 package org.ltir.vm.data;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import java.io.BufferedReader;
 import java.io.IOException;
 import static org.ltir.vm.data.XSerializable.deserialize;
@@ -21,6 +22,7 @@ public class Device extends XSerializable{
     String model;
     String osVersion;
     CLIReference reference;
+    @XStreamOmitField
     TreeNode<Command> commands;
 
     public Device(String name, String version, String model, String osVersion) {

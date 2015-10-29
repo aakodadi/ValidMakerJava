@@ -10,16 +10,28 @@
  */
 package org.ltir.vm.data;
 
-public class CLIReference {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import static org.ltir.vm.data.XSerializable.deserialize;
+
+public class CLIReference extends XSerializable {
+
     private String name;
     private String version;
     private String description;
-    private TreeNode<Command> commande;
+    private final List<Command> commands;
 
     public CLIReference(String name, String version, String description) {
         this.name = name;
         this.version = version;
         this.description = description;
+        commands = new ArrayList<>();
+    }
+
+    public static CLIReference deserializeCLIReference(BufferedReader br) throws IOException {
+        return (CLIReference) deserialize(br);
     }
 
     public String getName() {
@@ -45,18 +57,16 @@ public class CLIReference {
     public void setVersion(String version) {
         this.version = version;
     }
-    
-    
 
-    public TreeNode<Command> getCommand(int index) {
-        return commande.get(index);
+    public Command getCommand(int index) {
+        return commands.get(index);
     }
 
-    public boolean addCommand(TreeNode<Command> node) {
-        return commande.add(node);
+    public boolean addCommand(Command cmd) {
+        return commands.add(cmd);
     }
 
-    public boolean removeCommand(Command c) {
-        return commande.remove(c);
+    public boolean removeCommand(Command cmd) {
+        return commands.remove(cmd);
     }
 }

@@ -10,6 +10,7 @@
  */
 package org.ltir.vm.data;
 
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 public class NetworksManager extends XSerializable{
     private String workspace;
     private final List<Network> networks;
+    @XStreamOmitField
     private final List<CLIReference> metaCLIs;
 
     public NetworksManager(String workspace) {
