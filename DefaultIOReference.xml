@@ -8,7 +8,7 @@
       <arguments>
         <org.ltir.vm.data.Argument name="hostname" required="true">
           <value>$hostname</value>
-          <argRegEX>^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9]).)*([A-Za-z]|[A-Za-z][A-Za-z0-9-]*[A-Za-z0-9])$</argRegEX>
+          <argRegEX>(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9]).)*([A-Za-z]|[A-Za-z][A-Za-z0-9-]*[A-Za-z0-9])</argRegEX>
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
@@ -142,11 +142,11 @@
       <arguments>
         <org.ltir.vm.data.Argument name="ip-address" required="true">
           <value>$ip-address</value>
-          <argRegEX>^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</argRegEX>
+          <argRegEX>\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b</argRegEX>
         </org.ltir.vm.data.Argument>
         <org.ltir.vm.data.Argument name="mask" required="true">
-          <value>mask $mask</value>
-          <argRegEX>mask ^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$</argRegEX>
+          <value>mask 255.192.0.0</value>
+          <argRegEX>mask (((0|128|192|240|248|252|254|255)\.0\.0\.0)|(255\.(0|128|192|240|248|252|254|255)\.0\.0)|(255\.255\.(0|128|192|240|248|252|254|255)\.0)|(255\.255\.255\.(0|128|192|240|248|252|254|255)))</argRegEX>
         </org.ltir.vm.data.Argument>
         <org.ltir.vm.data.Argument name="secondary" required="false">
           <value>secondary</value>

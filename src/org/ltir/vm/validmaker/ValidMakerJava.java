@@ -130,7 +130,7 @@ public class ValidMakerJava {
         c = new Command(Cardinality.CARD_1_0, interfaceMode, "ip address", CommandType.COMMAND);
         a = new Argument("ip-address", "$ip-address", Argument.IPV4_ADDR_REGEX, true);
         c.addArgument(a);
-        a = new Argument("mask", "mask $mask", "mask " + Argument.IPV4_ADDR_REGEX, true);
+        a = new Argument("mask", "mask 255.192.0.0", "mask " + Argument.IPV4_MASK_REGEX, true);
         c.addArgument(a);
         a = new Argument("secondary", "secondary", "secondary", false);
         c.addArgument(a);
