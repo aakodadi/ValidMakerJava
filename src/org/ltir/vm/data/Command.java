@@ -10,6 +10,7 @@
  */
 package org.ltir.vm.data;
 
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +20,38 @@ public class Command {
     private Command mode;
     private String command;
     private final List<Argument> arguments;
+    @XStreamAsAttribute
+    private boolean negatebale;
+    @XStreamAsAttribute
+    private boolean negated;
 
-    public Command(Cardinality cardinality, Command mode, String command, CommandType type) {
+    public Command(Cardinality cardinality, Command mode, String command, CommandType type, boolean negatebale) {
         this.cardinality = cardinality;
         this.mode = mode;
         this.command = command;
         this.type = type;
         this.arguments = new ArrayList<>();
+        this.negatebale = negatebale;
+        this.negated = false;
     }
+
+    public boolean isNegatebale() {
+        return negatebale;
+    }
+
+    public void setNegatebale(boolean negatebale) {
+        this.negatebale = negatebale;
+    }
+
+    public boolean isNegated() {
+        return negated;
+    }
+
+    public void setNegated(boolean negated) {
+        this.negated = negated;
+    }
+    
+    
 
     public CommandType getType() {
         return type;

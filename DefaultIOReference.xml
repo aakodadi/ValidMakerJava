@@ -1,7 +1,7 @@
 <org.ltir.vm.data.CLIReference name="Default MetaCLI reference" version="all-versions">
   <description>Cisco IOS command reference</description>
   <commands>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="false" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <command>hostname</command>
@@ -12,7 +12,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="false" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <command>version</command>
@@ -23,7 +23,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <command>ip cef</command>
@@ -46,7 +46,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="false" negated="false">
       <cardinality>CARD_1_N</cardinality>
       <type>MODE</type>
       <command>interface</command>
@@ -61,7 +61,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_N</cardinality>
       <type>MODE</type>
       <command>ip vrf</command>
@@ -72,7 +72,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_N</cardinality>
       <type>MODE</type>
       <command>router isis</command>
@@ -87,19 +87,19 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_N</cardinality>
       <type>SUBMODE</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
-      <command>address-family vpnv4</command>
+      <command>address-family</command>
       <arguments>
-        <org.ltir.vm.data.Argument name="unicast" required="false">
-          <value>unicast</value>
-          <argRegEX>unicast</argRegEX>
+        <org.ltir.vm.data.Argument name="family" required="true">
+          <value>vpnv4 [unicast] | ipv4 vrf $vrf-name</value>
+          <argRegEX>(vpnv4)|(vpnv4 unicast)|(ipv4 vrf .+)</argRegEX>
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -111,7 +111,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -127,14 +127,14 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="false" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>no ip address</command>
       <arguments/>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="false" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -154,7 +154,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -166,7 +166,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -178,7 +178,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -190,14 +190,14 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
       <command>tag-switching ip</command>
       <arguments/>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -217,7 +217,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[4]"/>
@@ -229,7 +229,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="false" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
@@ -241,7 +241,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
@@ -253,7 +253,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[5]"/>
@@ -265,7 +265,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
@@ -277,14 +277,26 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
+      <cardinality>CARD_1_0</cardinality>
+      <type>COMMAND</type>
+      <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
+      <command>net</command>
+      <arguments>
+        <org.ltir.vm.data.Argument name="network-entity-title" required="true">
+          <value>$network-entity-title</value>
+          <argRegEX>.+</argRegEX>
+        </org.ltir.vm.data.Argument>
+      </arguments>
+    </org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
       <command>bgp log-neighbor-changes</command>
       <arguments/>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
@@ -300,7 +312,7 @@
         </org.ltir.vm.data.Argument>
       </arguments>
     </org.ltir.vm.data.Command>
-    <org.ltir.vm.data.Command>
+    <org.ltir.vm.data.Command negatebale="true" negated="false">
       <cardinality>CARD_1_0</cardinality>
       <type>COMMAND</type>
       <mode reference="/org.ltir.vm.data.CLIReference[1]/commands[1]/org.ltir.vm.data.Command[6]"/>
