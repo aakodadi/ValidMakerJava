@@ -23,7 +23,7 @@ import org.ltir.vm.data.CLIReference;
 import org.ltir.vm.data.Cardinality;
 import org.ltir.vm.data.Command;
 import org.ltir.vm.data.CommandType;
-import org.ltir.vm.gui.MainWindow;
+import org.ltir.vm.gui.MainGUI;
 
 public class ValidMakerJava {
 
@@ -221,8 +221,6 @@ public class ValidMakerJava {
         
         System.out.println(ioReference.getName());
         
-        MainWindow mw = new MainWindow();
-        mw.setSize(300, 500);
-        mw.setVisible(true);
+        MainGUI.main(args);
     }
 }
