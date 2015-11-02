@@ -16,10 +16,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.ltir.vm.validmaker.ValidMakerJava;
 
 /**
  *
- * @author Abdelhakim Akodadi <akodadi.abdekakim@gmail.com>
+ * @author <a href="mailto:akodadi.abdelhakim@gmail.com">Abdelhakim Akodadi</a>
  */
 public class MainGUI extends Application {
 
@@ -35,6 +36,7 @@ public class MainGUI extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ValidMakerJava.main(args);
         launch(args);
     }
 

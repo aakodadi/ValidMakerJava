@@ -12,8 +12,8 @@ package org.ltir.vm.data;
 
 /**
  *
- * @author Abdelhakim Akodadi <akodadi.abdelhakim@gmail.com>
- * @author Amine Rahj         <aminerahj@gmail.com>
+ * @author <a href="mailto:akodadi.abdelhakim@gmail.com">Abdelhakim Akodadi</a>
+ * @author <a href="mailto:aminerahj@gmail.com">Amine Rahj</a>
  */
 public enum CommandType {
     MODE, SUBMODE, COMMAND;

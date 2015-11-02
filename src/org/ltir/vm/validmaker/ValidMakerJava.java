@@ -23,8 +23,11 @@ import org.ltir.vm.data.CLIReference;
 import org.ltir.vm.data.Cardinality;
 import org.ltir.vm.data.Command;
 import org.ltir.vm.data.CommandType;
-import org.ltir.vm.gui.MainGUI;
 
+/**
+ *
+ * @author <a href="mailto:akodadi.abdelhakim@gmail.com">Abdelhakim Akodadi</a>
+ */
 public class ValidMakerJava {
 
     /**
@@ -221,6 +224,5 @@ public class ValidMakerJava {
         
         System.out.println(ioReference.getName());
         
-        MainGUI.main(args);
     }
 }

@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author Abdelhakim Akodadi <akodadi.abdekakim@gmail.com>
+ * @author <a href="mailto:akodadi.abdelhakim@gmail.com">Abdelhakim Akodadi</a>
  */
 public class MainGUIController implements Initializable {
 

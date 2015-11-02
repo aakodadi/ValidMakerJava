@@ -22,9 +22,9 @@ import java.io.IOException;
  * <code>static Object deserialize(BufferedReader br)</code> and casting it's
  * return to ClassName in order to avoid ClassCastExceptions
  *
- * @author Abdelhakim Akodadi <akodadi.abdelhakim@gmail.com>
- * @author Amine Rahj         <aminerahj@gmail.com>
- * @see com.thoughtworks.xstream.XStream
+ * @author <a href="mailto:akodadi.abdelhakim@gmail.com">Abdelhakim Akodadi</a>
+ * @author <a href="mailto:aminerahj@gmail.com">Amine Rahj</a>
+ * @see <a href="http://x-stream.github.io/">XStream</a>
  */
 public abstract class XSerializable {
 
