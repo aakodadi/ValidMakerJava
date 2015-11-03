@@ -23,6 +23,7 @@ import org.ltir.vm.validmaker.ValidMakerJava;
  * @author <a href="mailto:akodadi.abdelhakim@gmail.com">Abdelhakim Akodadi</a>
  */
 public class MainGUI extends Application {
+    
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -30,6 +31,7 @@ public class MainGUI extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        MainGUIController.initController(primaryStage);
     }
 
     /**

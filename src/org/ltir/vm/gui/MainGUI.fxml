@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -8,16 +9,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ltir.vm.gui.MainGUIController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
+            <MenuItem mnemonicParsing="false" text="New Network.." />
+                  <MenuItem mnemonicParsing="false" text="New File..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Open Network…" />
+            <Menu mnemonicParsing="false" text="Open Recent Network" />
+                  <MenuItem mnemonicParsing="false" text="Close Network" />
+                  <MenuItem mnemonicParsing="false" text="Close Other Networks" />
+                  <MenuItem mnemonicParsing="false" text="Close All Networks" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" text="Close" />
             <MenuItem mnemonicParsing="false" text="Save" />
@@ -43,6 +50,11 @@
             <MenuItem mnemonicParsing="false" text="Unselect All" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="Network">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Deploy" />
+               </items>
+            </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
             <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
@@ -50,9 +62,78 @@
         </Menu>
       </menus>
     </MenuBar>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
+      <ToolBar>
         <items>
-          <Button mnemonicParsing="false" text="Open" />
+          <Button mnemonicParsing="false" onAction="#newFileAction">
+                <graphic>
+                    <ImageView fitHeight="30.0" fitWidth="30.0">
+                       <image>
+                           <Image url="@icons/new_file.png" />
+                       </image>
+                    </ImageView>
+                </graphic>
+               <tooltip>
+                  <Tooltip text="New File... (Ctrl+N)" />
+               </tooltip>
+          </Button>
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/new_net.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="New Network..." />
+               </tooltip></Button>
+            <Button mnemonicParsing="false" text="Open Network..." />
+            <Button mnemonicParsing="false">
+               <tooltip>
+                  <Tooltip text="Save All (Ctrl+Shift+S)" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/save_all.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Separator orientation="VERTICAL" />
+            <Button mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/undo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Undo (Ctrl+Z)" />
+               </tooltip></Button>
+            <Button mnemonicParsing="false">
+               <tooltip>
+                  <Tooltip text="Redo (Ctrl+Y)" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/redo.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Separator orientation="VERTICAL" />
+            <Button mnemonicParsing="false">
+               <tooltip>
+                  <Tooltip text="Deploy Network... (F6)" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/deploy.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
         </items>
       </ToolBar>
       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="515.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
@@ -67,7 +148,7 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TreeView layoutY="13.0" prefHeight="384.0" prefWidth="219.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <TreeView fx:id="networksTreeView" layoutY="13.0" prefHeight="384.0" prefWidth="219.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                 </content>
@@ -114,18 +195,11 @@
             </AnchorPane>
         </items>
       </SplitPane>
-    <HBox id="HBox" alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="16.0" spacing="5.0" VBox.vgrow="NEVER">
+    <HBox id="HBox" alignment="BASELINE_CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="16.0" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label maxWidth="-1.0" text="Left status" HBox.hgrow="NEVER">
-          <font>
-            <Font size="11.0" fx:id="x3" />
-          </font>
-          <textFill>
-            <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
-          </textFill>
-        </Label>
+            <Label text="right statue" />
         <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-        <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+            <Label text="left statue" />
       </children>
     </HBox>
   </children>
