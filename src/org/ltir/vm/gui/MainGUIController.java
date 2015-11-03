@@ -15,6 +15,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.stage.FileChooser;
@@ -28,10 +30,11 @@ import javafx.stage.Window;
  */
 public class MainGUIController implements Initializable {
 
-    public static Window primaryWindow;
-    public static Stage primaryStage;
-    public static Scene primaryScene;
+    private static Window primaryWindow;
+    private static Stage primaryStage;
+    private static Scene primaryScene;
     public TreeView<String> networksTreeView;
+    public TextArea outputTextArea;
 
     /**
      * Initializes the controller class.
@@ -53,6 +56,7 @@ public class MainGUIController implements Initializable {
         File file = fileChooser.showOpenDialog(primaryWindow);
         if (file != null) {
             System.out.println(file.getAbsolutePath());
+            outputln("[NOTE] " + file.getAbsolutePath() + " was selected.");
         }
 
         TreeItem<String> root = new TreeItem();
@@ -77,6 +81,7 @@ public class MainGUIController implements Initializable {
 
         networksTreeView.setRoot(root);
         networksTreeView.setShowRoot(false);
+        outputln("[NOTE] Networks Tree Rendred.");
     }
 
     private TreeItem<String> addBranch(String text, TreeItem<String> parent) {
@@ -84,5 +89,13 @@ public class MainGUIController implements Initializable {
         item.setExpanded(true);
         parent.getChildren().add(item);
         return item;
+    }
+
+    private void outputln(String line) {
+        output(line + "\n");
+    }
+
+    private void output(String line) {
+        outputTextArea.appendText(line);
     }
 }
