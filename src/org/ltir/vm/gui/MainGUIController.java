@@ -10,18 +10,17 @@
  */
 package org.ltir.vm.gui;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextFormatter;
-import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import org.ltir.vm.data.managers.FileManager;
+import org.ltir.vm.data.managers.GuiManager;
+import org.ltir.vm.data.managers.ObjectManager;
 
 /**
  * FXML Controller class
@@ -33,8 +32,12 @@ public class MainGUIController implements Initializable {
     private static Window primaryWindow;
     private static Stage primaryStage;
     private static Scene primaryScene;
-    public TreeView<String> networksTreeView;
-    public TextArea outputTextArea;
+    private TreeView<String> networksTreeView = resetNetworkTree();
+    private TextArea outputTextArea;
+
+    private ObjectManager om;
+    private GuiManager gm;
+    private FileManager fm;
 
     /**
      * Initializes the controller class.
@@ -49,53 +52,56 @@ public class MainGUIController implements Initializable {
         primaryScene = stage.getScene();
         primaryWindow = primaryScene.getWindow();
     }
-
-    public void newFileAction() {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Resource File");
-        File file = fileChooser.showOpenDialog(primaryWindow);
-        if (file != null) {
-            System.out.println(file.getAbsolutePath());
-            outputln("[NOTE] " + file.getAbsolutePath() + " was selected.");
-        }
-
-        TreeItem<String> root = new TreeItem();
-        root.setExpanded(true);
-
-        TreeItem<String> network = addBranch("Net1", root);
-        TreeItem<String> genericServices = addBranch("Generic Services", network);
-        TreeItem<String> serviceInstences = addBranch("Service Instences", network);
-        TreeItem<String> serviceFamilies = addBranch("Service Families", network);
-
-        addBranch("GS MPLS", genericServices);
-        addBranch("GS VLAN", genericServices);
-
-        addBranch("SI MPLS - 1", serviceInstences);
-        addBranch("SI MPLS - 2", serviceInstences);
-        addBranch("SI MPLS - 3", serviceInstences);
-
-        addBranch("SI VLAN - 1", serviceInstences);
-        addBranch("SI VLAN - 2", serviceInstences);
-        addBranch("SI VLAN - 3", serviceInstences);
-        addBranch("SI VLAN - 4", serviceInstences);
-
-        networksTreeView.setRoot(root);
-        networksTreeView.setShowRoot(false);
-        outputln("[NOTE] Networks Tree Rendred.");
+    
+    public void addNewNetworkAction(){
+        
     }
 
-    private TreeItem<String> addBranch(String text, TreeItem<String> parent) {
-        TreeItem<String> item = new TreeItem<>(text);
-        item.setExpanded(true);
-        parent.getChildren().add(item);
-        return item;
+    /*
+     *
+     * public void newFileAction() { FileChooser fileChooser = new
+     * FileChooser(); fileChooser.setTitle("Open Resource File"); File file =
+     * fileChooser.showOpenDialog(primaryWindow); if (file != null) {
+     * System.out.println(file.getAbsolutePath()); outputln("[NOTE] " +
+     * file.getAbsolutePath() + " was selected."); }
+     *
+     * TreeItem<String> root = new TreeItem(); root.setExpanded(true);
+     *
+     * TreeItem<String> network = addBranch("Net1", root); TreeItem<String>
+     * genericServices = addBranch("Generic Services", network);
+     * TreeItem<String> serviceInstences = addBranch("Service Instences",
+     * network); TreeItem<String> serviceFamilies = addBranch("Service
+     * Families", network);
+     *
+     * addBranch("GS MPLS", genericServices); addBranch("GS VLAN",
+     * genericServices);
+     *
+     * addBranch("SI MPLS - 1", serviceInstences); addBranch("SI MPLS - 2",
+     * serviceInstences); addBranch("SI MPLS - 3", serviceInstences);
+     *
+     * addBranch("SI VLAN - 1", serviceInstences); addBranch("SI VLAN - 2",
+     * serviceInstences); addBranch("SI VLAN - 3", serviceInstences);
+     * addBranch("SI VLAN - 4", serviceInstences);
+     *
+     * networksTreeView.setRoot(root); networksTreeView.setShowRoot(false);
+     * outputln("[NOTE] Networks Tree Rendred."); }
+     *
+     * private TreeItem<String> addBranch(String text, TreeItem<String> parent)
+     * { TreeItem<String> item = new TreeItem<>(text); item.setExpanded(true);
+     * parent.getChildren().add(item); return item; }
+     *
+     * private void outputln(String line) { output(line + "\n"); }
+     *
+     * private void output(String line) { outputTextArea.appendText(line); }
+     *
+     *
+     */
+
+    public TreeView<String> getNetworksTreeView() {
+        return networksTreeView;
     }
 
-    private void outputln(String line) {
-        output(line + "\n");
-    }
-
-    private void output(String line) {
-        outputTextArea.appendText(line);
+    private TreeView<String> resetNetworkTree() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

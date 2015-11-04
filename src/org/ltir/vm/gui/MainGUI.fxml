@@ -13,55 +13,85 @@
 
 <VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ltir.vm.gui.MainGUIController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New Network.." />
-                  <MenuItem mnemonicParsing="false" text="New File..." />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Open Network…" />
-            <Menu mnemonicParsing="false" text="Open Recent Network" />
-                  <MenuItem mnemonicParsing="false" text="Close Network" />
-                  <MenuItem mnemonicParsing="false" text="Close Other Networks" />
-                  <MenuItem mnemonicParsing="false" text="Close All Networks" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-            <Menu mnemonicParsing="false" text="Network">
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Deploy" />
+                  <Menu mnemonicParsing="false" text="New...">
+                     <items>
+                        <MenuItem fx:id="addNewNetworkMenuItem" mnemonicParsing="false" onAction="#addNewNetworkAction" text="Network" />
+                        <MenuItem mnemonicParsing="false" text="Generic Service" />
+                        <MenuItem mnemonicParsing="false" text="Service Instance" />
+                        <MenuItem mnemonicParsing="false" text="Validation Rule" />
+                        <MenuItem mnemonicParsing="false" text="Service Family" />
+                        <MenuItem mnemonicParsing="false" text="Device" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Open...">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Network" />
+                        <MenuItem mnemonicParsing="false" text="Generic Service" />
+                        <MenuItem mnemonicParsing="false" text="Service Instance" />
+                        <MenuItem mnemonicParsing="false" text="Validation Rule" />
+                        <MenuItem mnemonicParsing="false" text="Service Family" />
+                        <MenuItem mnemonicParsing="false" text="Device" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Delete">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Network" />
+                        <MenuItem mnemonicParsing="false" text="Generic Service" />
+                        <MenuItem mnemonicParsing="false" text="Service Instance" />
+                        <MenuItem mnemonicParsing="false" text="Validation Rule" />
+                        <MenuItem mnemonicParsing="false" text="Service Family" />
+                        <MenuItem mnemonicParsing="false" text="Device" />
+                     </items>
+                  </Menu>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save as..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
                </items>
             </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
+            <Menu mnemonicParsing="false" text="Operation">
+               <items>
+                  <Menu mnemonicParsing="false" text="Discover">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Service" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Validate">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Service Family" />
+                        <MenuItem mnemonicParsing="false" text="Device" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Deploy">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Service Instance" />
+                     </items>
+                  </Menu>
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Tools">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="IOSReferrence..." />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="NetConf">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Service Deployer" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="User Guide" />
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
       <ToolBar>
         <items>
           <Button mnemonicParsing="false" onAction="#newFileAction">

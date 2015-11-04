@@ -14,6 +14,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,10 @@ public class Network extends XSerializable{
     
     public static Network deserializeNetwork(BufferedReader br) throws IOException{
         return (Network) deserialize(br);
+    }
+
+    public Network(File file) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getName() {
